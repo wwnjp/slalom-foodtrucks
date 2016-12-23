@@ -1,0 +1,26 @@
+
+nav {
+
+  ul {
+    @include display(flex);
+    @include padding(0);
+    @include margin(0);
+    list-style-type: none;
+
+    li {
+      @include flex-item;
+
+      a {
+        @include animate;
+        @include display(block);
+        @include text-center;
+        @include padding;
+
+        &:focus,
+        &:hover {
+          //text-decoration: none !important;
+        }
+      }
+    }
+  }
+}

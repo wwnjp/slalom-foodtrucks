@@ -1,0 +1,47 @@
+
+// Autocomplete
+.autocomplete {
+  .autocomplete-list {
+    @include position(absolute);
+    @include margin(0);
+    @include padding(0);
+    @include border(gray(60%), .5);
+    @include bg-color(white);
+    @include drop-shadow(1, .5);
+    @include z(1000);
+
+    left: 0;
+    list-style-type: none;
+    max-height: 18em;
+    overflow-y: scroll;
+    top: 100%;
+    width: 100%;
+
+    li {
+      span {
+        @include padding(1);
+        @include block;
+        @include color(gray(60%));
+        @include text(normal);
+        @include text-italic;
+      }
+
+      a {
+        @include display(block);
+        // @include text();
+        // @include color(gray(40%));
+        @include padding(1);
+        // text-decoration: none;
+
+        // &:hover {
+        //   @include color(theme-color2);
+        //   @include text-underline;
+        // }
+
+        &.selected {
+          @include bg-color(theme-color2);
+        }
+      }
+    }
+  }
+}

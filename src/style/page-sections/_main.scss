@@ -1,0 +1,59 @@
+// Main Sections
+// -----------------------
+* {
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+:root {
+  -webkit-font-smoothing: antialiased;
+  @include text(body);
+  height: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+  @include responsive(phone) {
+    font-size: map-get($font-sizes, mobile-base);
+  }
+}
+
+:focus {
+  outline: map-get($colors, theme-color2);
+}
+
+
+
+
+
+
+main {
+  .main-content {
+    @include relative;
+    @include z(100);
+    @include bg-color(white);
+  }
+}
+
+
+.wrapper {
+  @include relative;
+
+  @include responsive(desktop) {
+    min-height: 90vh;
+  }
+
+  &::after {
+    @include block;
+    content: '';
+  }
+}
+
+
+.container {
+  @include centerize;
+  @include padding(0 2);
+}

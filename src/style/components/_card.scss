@@ -1,0 +1,64 @@
+
+.card-section {
+  @include bg-color(gray(95%));
+
+}
+
+// Extra Page Layout Elements
+.card-container {
+  @include display(flex, stretch);
+  @include list-reset();
+  @include position(relative);
+
+  &.center {
+    @include centerize;
+  }
+
+  .empty-text {
+    @include absolute;
+    @include text-center;
+    @include padding(2);
+    @include border(theme-color2);
+    @include bg-color(white);
+    @include z(1000);
+    left: 30%;
+    top: 2em;
+    width: 40%;
+  }
+
+  .card {
+    @include padding;
+  }
+
+  .card-content {
+    @include padding(2);
+    @include margin(1 0);
+    @include bg-color(white);
+    @include border(gray(80%));
+  }
+
+  &.grid-view {
+    .card {
+      flex-basis: 30%;
+
+      @include responsive(tablet) {
+        flex-basis: 48%;
+      }
+
+      @include responsive(phone) {
+        flex-basis: 100%;
+      }
+    }
+  }
+
+  &.list-view {
+    .card {
+      flex-basis: 100%;
+    }
+  }
+}
+
+.card-count {
+  @include text-center;
+  @include margin(0 1);
+}

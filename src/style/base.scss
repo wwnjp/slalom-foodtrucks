@@ -1,0 +1,91 @@
+@import 'partials';
+
+@import 'page-sections/aside';
+@import 'page-sections/body';
+@import 'page-sections/footer';
+@import 'page-sections/header';
+@import 'page-sections/main';
+@import 'page-sections/nav';
+@import 'page-sections/section';
+
+@import 'typography/headers';
+@import 'typography/links';
+
+// TODO -- FIND A BETTER PLACE TO PUT THESE DECLARATIONS
+
+@for $i from 1 through $grid-number-of-columns {
+  @include make-grid($i);
+  @include make-grid($i, middle);
+  @include make-grid($i, bottom);
+  @include make-flex($i);
+}
+
+@each $col in $colors {
+  .bg-#{nth($col, 1)} {
+    @include bg-color(nth($col, 1));
+  }
+}
+
+.right {
+  @include text-right;
+}
+
+// Disappearing
+// sass-lint:disable no-important
+.hide {
+  display: none !important;
+}
+
+
+.three-d-base {
+  perspective: 1000;
+  transform-style: preserve-3d;
+}
+
+.parallax {
+  position: relative;
+  top: 0;
+}
+
+// sass-lint:disable no-qualifying-elements, force-element-nesting
+img.auto-scale {
+  @include padding(2);
+  width: 100%;
+}
+
+.show-on-scroll {
+  &.bottom {
+    @include fixed;
+    @include animate;
+    @include z(2000);
+    bottom: -4em;
+    left: 0;
+    width: 100%;
+
+    &.active {
+      bottom: 0;
+    }
+  }
+}
+
+
+.slide-from-top {
+  @include absolute;
+  @include animate-bounce(2);
+  @include transform(translateY(-100%));
+
+  &.active {
+    @include transform(translateY(0));
+  }
+}
+
+
+.slide-from-bottom {
+  @include absolute;
+  @include animate-bounce(2);
+  @include transform(translateY(100%));
+
+  &.active {
+    @include transform(translateY(0));
+  }
+}

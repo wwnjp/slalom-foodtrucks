@@ -1,0 +1,13 @@
+
+header {
+  @include z(900);
+  top: 0;
+  width: 100%;
+  @include color(white);
+
+  &.stickify {
+    @include bg-color(white);
+    @include border-bottom(gray(50%));
+    @include drop-shadow;
+  }
+}

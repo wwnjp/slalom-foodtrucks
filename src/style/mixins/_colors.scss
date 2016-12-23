@@ -1,0 +1,100 @@
+
+@function get-color($col, $opacity: 100%) {
+  $c: $col;
+
+  @if map-has-key($colors, $col) {
+    $c: map-get($colors, $col);
+  }
+
+  @if $opacity < 100% {
+    $c: opacify($c, $opacity);
+  }
+
+  @return $c;
+}
+
+@function gray($percentage) {
+  @return mix(map-get($colors, white), map-get($colors, black), $percentage);
+}
+
+@function color-lighten($color, $contrast: 1) {
+  @return lighten(get-color($color), ($color-change-contrast * $contrast));
+}
+
+@function color-darken($color, $contrast: 1) {
+  @return darken(get-color($color), ($color-change-contrast * $contrast));
+}
+
+@mixin color($c) {
+  color: get-color($c);
+}
+
+
+@mixin text-white {
+  @include color(white);
+
+  // h1,
+  // h2,
+  // h3,
+  // h4,
+  // h5,
+  // h6 {
+  //   @include color(white);
+  // }
+
+  a {
+    @include color(white);
+
+    &:after {
+      @include bg-color(white);
+    }
+
+    &:hover,
+    &:focus {
+      @include color(white);
+    }
+  }
+
+}
+
+@mixin bg-color($c) {
+  @if $c == transparent {
+    background-color: $c;
+  }
+
+  @else {
+    $col: get-color($c);
+
+    @if $c == white {
+      @include color(black);
+      background-color: $col;
+    }
+
+    @elseif lightness($col) >= 64% {
+      @include color(black);
+      background-color: $col;
+    }
+
+    @else {
+      @include text-white;
+      background-color: $col;
+    }
+  }
+}
+
+
+@mixin bg-color-gradient($c1, $c2: null) {
+  @if type-of($c1) == color {
+    $c1: $c1;
+  }
+  @else {
+    $c1: get-color($c1);
+  }
+
+  @if $c2 == null {
+    $c2: darken($c1, $color-change-contrast);
+  }
+
+  background: linear-gradient(from top, $c1, $c2);
+  background-color: $c1;
+}

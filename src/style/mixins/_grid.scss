@@ -1,0 +1,31 @@
+
+@mixin make-grid($i, $alignment: top) {
+  $perc: ($i * 100 / $grid-number-of-columns);
+  $suffix: if($alignment == top, '', '-#{$alignment}');
+
+  .grid-#{$i}#{$suffix} {
+    display: inline-block;
+    vertical-align: $alignment;
+    width: ($perc * 1%);
+
+    @if $perc < $grid-width-threshold {
+      @include responsive(phone) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@mixin make-flex($i) {
+  $perc: ($i * 100 / $grid-number-of-columns);
+
+  .flex-#{$i} {
+    flex-basis: ($perc * 1%);
+  }
+
+  @include responsive(phone) {
+    .m-flex-#{$i} {
+      flex-basis: ($perc * 1%);
+    }
+  }
+}

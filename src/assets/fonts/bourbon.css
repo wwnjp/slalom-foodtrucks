@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Bourbon';
+  font-style: normal;
+  font-weight: 400;
+  src: url("Bourbon-Regular.woff2") format('woff2'),
+       url("Bourbon-Regular.woff")  format('woff');
+};
+
+@font-face {
+  font-family: 'Bourbon';
+  font-style: italic;
+  font-weight: 400;
+  src: url("Bourbon-RegularOblique.woff2") format('woff2'),
+       url("Bourbon-RegularOblique.woff") format('woff');
+};
+
+@font-face {
+  font-family: 'Bourbon';
+  font-style: normal;
+  font-weight: 100;
+  src: url("Bourbon-Lines.woff2") format('woff2'),
+       url("Bourbon-Lines.woff") format('woff');
+};
+
+@font-face {
+  font-family: 'Bourbon';
+  font-style: italic;
+  font-weight: 100;
+  src: url("Bourbon-LinesOblique.woff2") format('woff2'),
+       url("Bourbon-LinesOblique.woff") format('woff');
+};

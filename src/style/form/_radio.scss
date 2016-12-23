@@ -1,0 +1,70 @@
+
+
+.radio-container {
+  @include bg-color(gray(95%));
+  @include position(relative);
+  @include margin-bottom(2);
+  @include padding-right(3);
+  @include display(flex);
+  @include border-radius;
+
+  input[type='radio'] {
+    @include text-disappear;
+
+    & + label {
+      @include flex-item;
+      @include text(body);
+      @include padding(1.5 1);
+      @include text-no-wrap;
+      @include animate(.5);
+      box-shadow: inset 0 0 0 0 gray(80%);
+
+      &:before {
+        @include icon('circle-inactive', theme-color1);
+        @include animate(.5);
+        @include inline-block(middle);
+        @include bg-color(gray(95%));
+        @include color(gray(80%));
+        @include border(gray(50%));
+        @include round;
+        @include drop-shadow(0, 0, map-get($colors, theme-color2));
+        @include margin-right;
+        @include text-center;
+      }
+    }
+
+    &:focus + label {
+      &:before {
+        @include border(theme-color2);
+        @include drop-shadow(1, 0, fade-out(map-get($colors, theme-color2), .5));
+        outline: none;
+      }
+    }
+
+    &:checked + label {
+      // @include bg-color(gray4);
+      box-shadow: inset 100px 0 0 0 get-color(gray3);
+
+      &:before {
+        @include icon('circle', theme-color1);
+      }
+    }
+
+    &[disabled] + label {
+      @include color(gray(40%));
+
+      &:before {
+        @include bg-color(gray(75%));
+      }
+    }
+
+    &.error + label {
+      &:before {
+        @include bg-color(gray(80%));
+        @include border(theme-color6);
+        @include round;
+        @include color(theme-color6);
+      }
+    }
+  }
+}

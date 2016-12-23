@@ -1,0 +1,11 @@
+<div class="card-section">
+  <ul class="card-container center">
+    <li class="card flex-4 m-flex-2" *ngFor="let ft of foodtrucks">
+      <div class="card-content">
+        <h2>{{ft.name}}</h2>
+        <div class="small">{{ft.region}}</div>
+        <div class="small">{{ft.description}}</div>
+      </div>
+    </li>
+  </ul>
+</div>
