@@ -21,6 +21,11 @@
 
   .flex-#{$i} {
     flex-basis: ($perc * 1%);
+    @if $perc < $grid-width-threshold {
+      @include responsive(phone) {
+        flex-basis: 100%;
+      }
+    }
   }
 
   @include responsive(phone) {

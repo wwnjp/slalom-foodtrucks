@@ -2,7 +2,7 @@ import { Component, Directive, ElementRef, Renderer, ChangeDetectionStrategy, Vi
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated,
   selector: 'app',
   styleUrls: [ '../style/base.scss' ],
   templateUrl: 'app.component.html'
